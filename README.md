@@ -1,7 +1,12 @@
+http://blog.csdn.net/hhg208/article/details/5713865
+# 配置管理（Configuration Management，CM）
+是通过技术或行政手段对软件产品及其开发过程和生命周期进行控制、规范的一系列措施。配置管理的目标是记录软件产品的演化过程，确保软件开发者在软件生命周期中各个阶段都能得到精确的产品配置。
+
+
 # ClearCase基本概念
 1. VOB--Versioned Object Base, ClearCase将所有管理的文件的各种版本都存储在这个VOB中，VOB可以看作是整个ClearCase SCM系统的中心数据库。
 
-2. View--View分为SnapShot View和Dynamic View，Snapshot view是clearcase在服务器上存储的文件和目录的一个本地镜像，用户可以在本地进行修改，然后进行同步，要经常Update View保持最新的版本，Dynamic View是动态试图，他并不在本地存储任何文件，始终和服务器保持一致。
+2. View--View分为SnapShot View和Dynamic View，Snapshot view是clearcase在服务器上存储的文件和目录的一个本地镜像，用户可以在本地进行修改，然后进行同步，要经常Update View保持最新的版本，Dynamic View是动态视图，他并不在本地存储任何文件，始终和服务器保持一致。
 
 3. Reserved checkout vs unreserved checkout -- 一个文件可以被多个用户的多个view来unreserved checkout，但是同时只能有一个用户reserved checkout。当一个用户reserved checkout的时候，其他unreserved checkout的文件，不能checkin，只能等reserved checkout的文件被checkin之后才能够checkin。
 
@@ -11,5 +16,7 @@
 
 6. merge文件--当一个用户check out一个文件进行了修改，在check in的时候如果clearcase发现这个文件和最新的版本有冲突的时候（可能是其他用户也对该文件进行了修改并已经check in），会提示要merge文件，这时候就可能需要手工的merge了。
 
-# ClearCase的四种功能
-## Workspace Management
+# 配置管理工具之ClearCase的四种功能
+1. Workspace（view） Management
+软件配置管理工具的一个基本功能是建立和管理开发人员的工作空间。在 ClearCase 中，工作空间被称为视图（ View ）。通俗的讲， View 就像一个过滤器，依据一组配置规则从 VOB 中将我们需要的文件或目录的版本选择出来。当你安装了 ClearCase 客户端软件后，要做的第一件事就是创建 View，通过视图，来访问 VOB 库中文件和目录版本，如你可以浏览、修改、构建可用的文件和目录。
+经过一段时间的使用后，用户因需要会创建了多个视图（通常与任务对应），这就涉及到视图的管理和维护问题
