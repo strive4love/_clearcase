@@ -463,3 +463,22 @@ Cannot unlock a Production Release - Contact vob admin
 
 Cathy 
 the package is missing
+
+
+## 
+登陆clear case(1490621/ admin@1234). 找到你要更改的文件
+/dev_vob/packages/poseidon
+[1490621@dl1101 poseidon]$ ls
+[1490621@dl1101 poseidon]$ ct setview 1490621
+[1490621@dl1101 poseidon]$ find . -name pro_bext_flexi_frd_chk.cf
+./eod_auto/config/jobdefs/pro_bext_flexi_frd_chk.cf
+[1490621@dl1101 poseidon]$ cd ./eod_auto/config/jobdefs
+[1490621@dl1101 jobdefs]$ ct lsvtree pro_bext_flexi_frd_chk.cf
+pro_bext_flexi_frd_chk.cf@@/main
+pro_bext_flexi_frd_chk.cf@@/main/2
+check out 要更改的文件，修改后，check  in，检查是否生成了版本
+[1490621@dl1101 jobdefs]$ ct co -nc pro_bext_flexi_frd_chk.cf
+Checked out "pro_bext_flexi_frd_chk.cf" from version "/main/2".
+[1490621@dl1101 jobdefs]$ vi pro_bext_flexi_frd_chk.cf
+[1490621@dl1101 jobdefs]$ ct ci -nc pro_bext_flexi_frd_chk.cf
+Checked in "pro_bext_flexi_frd_chk.cf" version "/main/3".
